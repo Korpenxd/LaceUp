@@ -1,0 +1,435 @@
+<!doctype html>
+<html lang="sv">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#000000">
+  <link rel="canonical" href="https://laceup.example/">
+  <title>Lace Up — Frisör & Barbershop • Alingsås</title>
+  <meta name="description" content="Lace Up Frisör & Barbershop — Professionella klippningar, färgningar och barberartjänster i Alingsås. Svarta väggar med guldådring och modern känsla.">
+
+  <!-- Preconnect & preload for performance -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700;800&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="preload" href="img/hero1.jpg" as="image">
+
+  <!-- JSON-LD Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "HairSalon",
+    "name": "Lace Up",
+    "image": "https://laceup.example/img/LaceUpEst22.jpg",
+    "description": "Professionell frisör- och barberarsalong",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Norra Strömgatan 16",
+      "addressLocality": "Alingsås",
+      "postalCode": "441 30",
+      "addressCountry": "SE"
+    },
+    "telephone": "032-212477",
+    "url": "https://laceup.example/",
+    "sameAs": ["https://www.instagram.com/laceupest22/"]
+  }
+  </script>
+
+  <style>
+    :root{
+      --bg:#000;
+      --panel:#0a0a0a;
+      --gold-a:#d4af37;
+      --gold-b:#f5d76e;
+      --muted:#bfbfbf;
+      --max-width:1100px;
+    }
+    *{box-sizing:border-box}
+    html,body{
+      height:100%;
+      margin:0;
+      background: url("img/gold-bg.jpg") center center / cover no-repeat fixed;
+      color:#eee;
+      font-family:Montserrat,Arial;
+      -webkit-font-smoothing:antialiased;
+    }
+    html{
+      background:#000;
+    }
+
+    a{color:var(--gold-a);text-decoration:none}
+
+    /* Focus styles for accessibility */
+    a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible {
+      outline: 2px solid var(--gold-a);
+      outline-offset: 2px;
+    }
+
+    /* NAV */
+    header{position:fixed;left:0;right:0;top:0;z-index:60;background:linear-gradient(rgba(0,0,0,0.55),rgba(0,0,0,0.15));backdrop-filter:blur(6px)}
+    .nav-wrap{max-width:var(--max-width);margin:auto;padding:14px 20px;display:flex;justify-content:space-between;align-items:center}
+    .logo{width:52px;height:52px;border-radius:10px;background:conic-gradient(from 180deg at 50% 50%, var(--gold-a), var(--gold-b));display:flex;align-items:center;justify-content:center;font-weight:900;color:#000;font-family:'Playfair Display'}
+    nav{role:navigation}
+    nav ul{display:flex;gap:18px;list-style:none;margin:0;padding:0}
+    .cta{border:2px solid rgba(212,175,55,0.95);padding:8px 14px;border-radius:999px;font-weight:700}
+
+    body::after{
+      content:"";
+      position:fixed;
+      inset:0;
+      background:rgba(0,0,0,0.50);
+      z-index:0;
+      pointer-events:none;
+    }
+
+    /* HERO */
+    .hero{position:relative;min-height:86vh;display:flex;align-items:center;padding:120px 20px 60px;z-index:1}
+    .hero-inner{max-width:var(--max-width);margin:auto;display:grid;grid-template-columns:1fr 460px;gap:48px;align-items:center}
+    .hero-left h1{font-family:'Playfair Display';font-size:46px;margin:0 0 12px;background:linear-gradient(90deg,var(--gold-a),var(--gold-b));-webkit-background-clip:text;color:transparent}
+    .hero-left p{color:var(--muted);margin:0 0 18px}
+    .actions{display:flex;gap:12px}
+    .btn-primary{background:linear-gradient(90deg,var(--gold-a),var(--gold-b));color:#000;padding:12px 20px;border-radius:12px;font-weight:800;border:none;cursor:pointer}
+    .btn-ghost{background:transparent;border:1px solid rgba(255,255,255,0.06);padding:12px 20px;border-radius:12px;color:var(--muted);cursor:pointer}
+
+    .hero-right{height:460px;border-radius:16px;overflow:hidden;background:#0b0b0b;border:1px solid rgba(255,255,255,0.03);box-shadow:0 20px 60px rgba(0,0,0,0.6)}
+    .hero-right img{width:100%;height:100%;object-fit:cover;display:block;transform:scale(1);transition:transform .9s cubic-bezier(.2,.9,.2,1)}
+    .hero-right:hover img{transform:scale(1.05)}
+    #hero-rotator {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: opacity 1s ease-in-out;
+    }
+
+    /* Sections */
+    main{position:relative;z-index:2}
+    .container{max-width:var(--max-width);margin:auto;padding:60px 20px}
+    h2{font-family:'Playfair Display';font-size:28px;margin:0 0 18px;background:linear-gradient(90deg,var(--gold-a),var(--gold-b));-webkit-background-clip:text;color:transparent}
+
+    .services{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .service{padding:20px;border-radius:12px;background:linear-gradient(180deg,rgba(255,255,255,0.01),transparent);border:1px solid rgba(255,255,255,0.03);transform:translateY(0);transition:transform .35s ease,box-shadow .35s ease}
+    .service:hover{transform:translateY(-8px);box-shadow:0 20px 40px rgba(0,0,0,0.6)}
+    .price{color:var(--gold-b);font-weight:800}
+
+    /* Gallery */
+    .insta-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+    .insta-item{background:#0b0b0b;border-radius:8px;padding:6px;border:1px solid rgba(255,255,255,0.03);overflow:hidden;min-height:200px}
+    .insta-item iframe, .insta-item blockquote{width:100%}
+
+    /* Contact */
+    .contact-grid{display:grid;grid-template-columns:1fr 360px;gap:18px}
+    .map{height:500px;border-radius:12px;background:#0c0c0c;border:1px solid rgba(255,255,255,0.03);display:flex;align-items:center;justify-content:center;color:var(--muted)}
+    .contact-parallax {
+      position: relative;
+      padding: 60px 20px;
+      background: url("img/gold-bg-flipped.jpg") center center / cover no-repeat fixed;
+      overflow: hidden;
+    }
+
+    .contact-parallax::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.50);
+      z-index: 0;
+    }
+
+    .contact-parallax .container {
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Form styling */
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .form-group label {
+      font-weight: 700;
+      font-size: 14px;
+    }
+
+    .form-group input,
+    .form-group textarea {
+      padding: 12px;
+      border-radius: 8px;
+      border: 1px solid rgba(255,255,255,0.15);
+      background: #0c0c0c;
+      color: #eee;
+      font-family: inherit;
+    }
+
+    .form-group textarea {
+      resize: vertical;
+      min-height: 100px;
+    }
+
+    /* Footer */
+    footer{padding:30px 20px;text-align:center;color:var(--muted);border-top:1px solid rgba(255,255,255,0.03)}
+
+    /* Animations */
+    .fade-up{opacity:0;transform:translateY(10px)}
+    .fade-up.animate-in{opacity:1;transform:none;animation:fadeUp .7s forwards}
+    .stagger-1{animation-delay:.05s}
+    .stagger-2{animation-delay:.12s}
+    .stagger-3{animation-delay:.18s}
+    @keyframes fadeUp{to{opacity:1;transform:none}}
+
+    /* Respect reduced motion preference */
+    @media (prefers-reduced-motion: reduce) {
+      .fade-up, #hero-rotator, .hero-right img, .service, * {
+        transition: none !important;
+        animation: none !important;
+      }
+    }
+
+    /* Mobile: disable fixed background attachment */
+    @media(max-width:980px){
+      html, body {
+        background-attachment: scroll;
+      }
+      .contact-parallax {
+        background-attachment: scroll;
+      }
+      .hero-inner{grid-template-columns:1fr}
+      .services{grid-template-columns:1fr}
+      .insta-grid{grid-template-columns:repeat(2,1fr)}
+      .contact-grid{grid-template-columns:1fr}
+      .hero-right{height:300px}
+    }
+    @media(max-width:560px){nav ul{display:none}.logo{width:44px;height:44px}}
+  </style>
+</head>
+<body>
+  <a href="#main" class="skip-link" style="position:absolute;left:-9999px;z-index:9999">Hoppa till innehåll</a>
+
+  <header role="banner">
+    <div class="nav-wrap">
+      <div style="display:flex;align-items:center;gap:12px;">
+        <div style="width:64px;height:64px;display:flex;align-items:center;justify-content:center">
+          <img src="img/LaceUpEst22.jpg" alt="Lace Up Logo" width="64" height="64" style="width:100%;height:100%;object-fit:contain">
+        </div>
+        <div>
+          <div style="font-weight:800">Lace Up</div>
+          <div style="font-size:10px;color:var(--muted)">Est. 22</div>
+          <div style="font-size:14px;color:var(--muted)">Frisör & Barbershop • Alingsås</div>
+        </div>
+      </div>
+      <nav role="navigation">
+        <ul>
+          <li><a href="#services">Tjänster</a></li>
+          <li><a href="#gallery">Galleri</a></li>
+          <li><a href="#about">Om oss</a></li>
+          <li><a href="#contact">Kontakt</a></li>
+        </ul>
+      </nav>
+      <div style="display:flex;gap:10px;align-items:center">
+        <a class="cta" href="https://www.instagram.com/laceupest22/" target="_blank" rel="noopener noreferrer">Instagram</a>
+        <a class="btn-primary" href="https://www.bokadirekt.se/places/lace-up-50202" target="_blank" rel="noopener noreferrer">Boka</a>
+      </div>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="hero-inner">
+      <div class="hero-left">
+        <h1 class="fade-up">Frisör. Barbering. Behandling.</h1>
+        <p class="fade-up stagger-1">På Lace Up kombinerar vi modernt frisörhantverk med klassisk barbering i en miljö där precision och kreativitet står i centrum. Med mästarbrev i frisöryrket och specialisering inom färg erbjuder vi skräddarsydda behandlingar för både hår och skägg.</p>
+        <div class="actions fade-up stagger-2">
+          <a class="btn-primary" href="https://www.bokadirekt.se/places/lace-up-50202" target="_blank" rel="noopener noreferrer">Boka tid</a>
+          <a class="btn-ghost" href="#gallery">Se galleri</a>
+        </div>
+      </div>
+      <div class="hero-right fade-up stagger-3">
+        <img id="hero-rotator" src="img/hero1.jpg" alt="Frisörsalong med modernt interiör och gulddetaljer" width="460" height="460">
+      </div>
+    </div>
+  </section>
+
+  <main id="main">
+    <section id="services" class="container">
+      <h2>Tjänster</h2>
+      <div class="services">
+        <div class="service fade-up stagger-1">
+          <h3>Herrklippning</h3>
+          <div class="price">Från 350 kr</div>
+          <p>Fades, maskin och sax – anpassad stil med konsultation.</p>
+        </div>
+        <div class="service fade-up stagger-2">
+          <h3>Rakning & Skägg</h3>
+          <div class="price">Från 250 kr</div>
+          <p>Klassisk rakning, varma handdukar och skäggformning.</p>
+        </div>
+        <div class="service fade-up stagger-3">
+          <h3>Klipp & Färg</h3>
+          <div class="price">Från 1750 kr</div>
+          <p>Balayage, helfärg och avancerade färgtekniker.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="gallery" class="container">
+      <h2>Galleri — från Instagram</h2>
+      <div class="insta-grid" id="insta-grid">
+        <div class="insta-item fade-up stagger-1"><img loading="lazy" src="img/IG_1.jpg" alt="Kvinnlig klippning - kort frisyr" width="600" height="600" style="width:100%;height:100%;object-fit:cover;border-radius:6px"></div>
+        <div class="insta-item fade-up stagger-2"><img loading="lazy" src="img/IG_2.jpg" alt="Herrfrisyr - trendigt kort hår" width="600" height="600" style="width:100%;height:100%;object-fit:cover;border-radius:6px"></div>
+        <div class="insta-item fade-up stagger-3"><img loading="lazy" src="img/IG_3.jpeg" alt="Färgbehandling - balayage" width="600" height="600" style="width:100%;height:100%;object-fit:cover;border-radius:6px"></div>
+        <div class="insta-item fade-up stagger-1"><img loading="lazy" src="img/IG_4.jpeg" alt="Barbering och skäggformning" width="600" height="600" style="width:100%;height:100%;object-fit:cover;border-radius:6px"></div>
+        <div class="insta-item fade-up stagger-2"><img loading="lazy" src="img/IG_5.jpg" alt="Hårfärgning - trendiga toner" width="600" height="600" style="width:100%;height:100%;object-fit:cover;border-radius:6px"></div>
+        <div class="insta-item fade-up stagger-3"><img loading="lazy" src="img/IG_8.jpg" alt="Herrklipper vid arbete" width="600" height="600" style="width:100%;height:100%;object-fit:cover;border-radius:6px"></div>
+        <div class="insta-item fade-up stagger-1"><img loading="lazy" src="img/IG_6.jpg" alt="Färgad hårfrisyr - modern design" width="600" height="600" style="width:100%;height:100%;object-fit:cover;border-radius:6px"></div>
+        <div class="insta-item fade-up stagger-2"><img loading="lazy" src="img/IG_7.webp" alt="Kortklippning för män" width="600" height="600" style="width:100%;height:100%;object-fit:cover;border-radius:6px"></div>
+        <div class="insta-item fade-up stagger-3"><img loading="lazy" src="img/IG_9.jpg" alt="Frisörsalong interiör" width="600" height="600" style="width:100%;height:100%;object-fit:cover;border-radius:6px"></div>
+      </div>
+    </section>
+
+    <section id="about" class="container">
+      <h2>Om oss</h2>
+      <p>Lace Up är en modern frisör- och barberarsalong i hjärtat av Alingsås. Grundad och driven av <strong>Linda "Blomman"</strong>. Vi fokuserar på klippning, färg och barbering med högt hantverkskunnande och varmt bemötande.</p>
+    </section>
+
+    <section id="contact" class="contact-parallax">
+      <div class="container">
+        <h2>Kontakt</h2>
+        <div class="contact-grid">
+          <div>
+            <p>Adress:<br><strong>Norra Strömgatan 16, 441 30 Alingsås</strong></p>
+            <p>Telefon:<br><strong><a href="tel:032-212477">032-212477</a></strong></p>
+            <p>Boka tid:<br>
+              <a href="https://www.bokadirekt.se/places/lace-up-50202" target="_blank" rel="noopener noreferrer">Via Bokadirekt</a>
+              eller via <a href="https://www.instagram.com/laceupest22/" target="_blank" rel="noopener noreferrer">Instagram DM</a>.
+            </p>
+
+            <h3 style="margin-top:24px;">Skicka ett meddelande</h3>
+            <form id="contact-form" style="display:flex;flex-direction:column;gap:12px;max-width:360px;">
+              <div class="form-group">
+                <label for="contact-name">Namn</label>
+                <input id="contact-name" type="text" name="Namn" placeholder="Ditt namn" required>
+              </div>
+
+              <div class="form-group">
+                <label for="contact-email">E-post</label>
+                <input id="contact-email" type="email" name="E-post" placeholder="Din e-post" required>
+              </div>
+
+              <div class="form-group">
+                <label for="contact-message">Meddelande</label>
+                <textarea id="contact-message" name="Meddelande" placeholder="Skriv ditt meddelande…" required></textarea>
+              </div>
+
+              <button type="submit" class="btn-primary" style="align-self:flex-start">Skicka</button>
+            </form>
+          </div>
+
+          <div>
+            <div class="map">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3370.708924158218!2d12.530962899999999!3d57.929961399999996!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4645527df88583ed%3A0x467585d2f5965d40!2sNorra%20Str%C3%B6mgatan%2016%2C%20441%2030%20Alings%C3%A5s!5e1!3m2!1sen!2sse!4v1765232541249!5m2!1sen!2sse"
+                width="100%" height="100%" style="border:0;border-radius:12px;"
+                allowfullscreen="" loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+                title="Lace Up på Google Maps">
+              </iframe>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer role="contentinfo">© <span id="year"></span> Lace Up • Est. 22 • Alingsås</footer>
+
+  <script async defer src="https://www.instagram.com/embed.js"></script>
+
+  <script>
+    const heroImages = [
+      "img/hero1.jpg",
+      "img/hero2.jpg",
+      "img/hero3.jpg",
+      "img/hero4.jpg",
+      "img/hero5.jpg",
+      "img/hero6.jpg",
+      "img/hero7.jpg",
+      "img/hero8.jpg"
+    ];
+
+    let heroIndex = 0;
+    let heroInterval = null;
+    const heroImg = document.getElementById("hero-rotator");
+
+    // Guard: only start rotation if element exists
+    if (heroImg) {
+      heroInterval = setInterval(() => {
+        heroImg.style.opacity = 0;
+        setTimeout(() => {
+          heroIndex = (heroIndex + 1) % heroImages.length;
+          heroImg.src = heroImages[heroIndex];
+          heroImg.style.opacity = 1;
+        }, 1000);
+      }, 5000);
+    }
+
+    // Stop rotation when tab is hidden
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden && heroInterval) {
+        clearInterval(heroInterval);
+      } else if (!document.hidden && heroImg) {
+        heroInterval = setInterval(() => {
+          heroImg.style.opacity = 0;
+          setTimeout(() => {
+            heroIndex = (heroIndex + 1) % heroImages.length;
+            heroImg.src = heroImages[heroIndex];
+            heroImg.style.opacity = 1;
+          }, 1000);
+        }, 5000);
+      }
+    });
+
+    // Intersection Observer for fade-up animations
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('animate-in');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.06 });
+
+    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
+        e.preventDefault();
+        const target = document.querySelector(a.getAttribute('href'));
+        if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+    });
+
+    // Set current year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Auto-expanding textarea
+    const textarea = document.querySelector('textarea[name="Meddelande"]');
+    if (textarea) {
+      textarea.addEventListener('input', () => {
+        textarea.style.height = 'auto';
+        textarea.style.height = textarea.scrollHeight + 'px';
+      });
+    }
+
+    // Contact form handling (basic - replace with server endpoint in production)
+    const contactForm = document.getElementById('contact-form');
+    if (contactForm) {
+      contactForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        alert('Tack för ditt meddelande! Vi kontaktar dig snart.');
+        contactForm.reset();
+      });
+    }
+  </script>
+</body>
+</html>
