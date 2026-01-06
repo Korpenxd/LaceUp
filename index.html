@@ -306,7 +306,7 @@
   </style>
 </head>
 <body>
-
+  <a href="#main" class="skip-link" style="position:absolute;left:-9999px;z-index:9999">Hoppa till innehåll</a>
 
   <header role="banner">
     <div class="nav-wrap">
@@ -642,7 +642,6 @@
 </footer>
 
 
-  <script defer src="https://www.instagram.com/embed.js"></script>
 
   <script>
   const heroImages = [
@@ -729,14 +728,8 @@ if (document.hidden && heroInterval) {
         textarea.style.height = 'auto';
         textarea.style.height = textarea.scrollHeight + 'px';
       });
-    }
+    };
 
-    window.addEventListener("load", () => {
-      const script = document.createElement("script");
-      script.src = "https://www.instagram.com/embed.js";
-      script.defer = true;
-      document.body.appendChild(script);
-    });
 
 
 
