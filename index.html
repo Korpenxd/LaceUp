@@ -14,20 +14,17 @@
     base-uri 'self';
     form-action 'self';
   ">
-  <meta name="google-site-verification" content="NGU1ZoO3HKB5w0kx5vhKo8BXXcWgAhRCPMYtP-nXe5Q" />
+
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="theme-color" content="#000000">
-  <link rel="canonical" href="https://korpenxd.github.io/LaceUp/
-">
+  <link rel="canonical" href="https://laceup.example/">
   <title>Lace Up — Frisör & Barbershop • Alingsås</title>
   <meta name="description" content="På Lace Up kombinerar vi modernt frisörhantverk med klassisk barbering i en miljö där precision och kreativitet står i centrum. Med mästarbrev i frisöryrket och specialisering inom färg erbjuder vi skräddarsydda behandlingar för både hår och skägg.">
   <meta property="og:title" content="Lace Up — Frisör & Barbershop i Alingsås">
   <meta property="og:description" content="Modern frisör- och barberarsalong i Alingsås. Boka online.">
-  <meta property="og:image" content="https://korpenxd.github.io/LaceUp/
-img/LaceUpEst22.jpg">
+  <meta property="og:image" content="https://laceup.example/img/LaceUpEst22.jpg">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://korpenxd.github.io/LaceUp/
-">
+  <meta property="og:url" content="https://laceup.example/">
   <meta name="twitter:card" content="summary_large_image">
 
 
@@ -54,7 +51,7 @@ img/LaceUpEst22.jpg">
       "addressCountry": "SE"
     },
     "telephone": "032-212477",
-    "url": "https://laceup.example/",
+    "url": "https://korpenxd.github.io/LaceUp/",
     "sameAs": ["https://www.instagram.com/laceupest22/"]
   }
   </script>
@@ -75,6 +72,7 @@ img/LaceUpEst22.jpg">
       background: url("img/gold-bg.webp") center center / cover no-repeat fixed;
       color:#eee;
       font-family:Montserrat,Arial;
+      font-display: swap;
       -webkit-font-smoothing:antialiased;
     }
     html{
@@ -278,10 +276,9 @@ img/LaceUpEst22.jpg">
     /* Footer */
     footer{
       padding:30px 20px;
-      text-align: center;
+      text-align:center;
       color:#eee;
-      border-top:1px solid rgba(255,255,255,0.03);
-    }
+      border-top:1px solid rgba(255,255,255,0.03)};
 
     .footer-muted {
       color: var(--muted);
@@ -363,15 +360,18 @@ img/LaceUpEst22.jpg">
         </div>
       </div>
       <div class="hero-right fade-up stagger-3">
-      <img
-        id="hero-rotator"
-        src="img/hero1.webp"
-        alt="Frisörsalong med mordernt interiör och gulddetaljer"
-        width="460"
-        height="460"
-        decoding="async"
-        fetchpriority="high"
-        />
+      <picture>
+        <source srcset="img/hero1.webp" type="image/webp">
+        <img
+          id="hero-rotator"
+          src="img/hero1.jpg"
+          alt="Frisörsalong med modernt interiör och gulddetaljer"
+          width="460"
+          height="460"
+          decoding="async"
+          fetchpriority="high"
+        >
+      </picture>
     </div>
 
     </div>
@@ -578,18 +578,17 @@ img/LaceUpEst22.jpg">
       </div>
 
       <!-- COLUMN 3: MAP -->
-      <div class="map">
-        <iframe
-          src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3370.7089617150336!2d12.530963!3d57.929961!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4645527df88583ed%3A0x467585d2f5965d40!2sNorra%20Str%C3%B6mgatan%2016%2C%20441%2030%20Alings%C3%A5s!5e1!3m2!1sen!2sse!4v1765717259627!5m2!1sen!2sse"
-          width="100%"
-          height="100%"
-          style="border:0;border-radius:12px;"
-          allowfullscreen
-          loading="lazy"
-          referrerpolicy="no-referrer-when-downgrade"
-          title="Lace Up på Google Maps">
-        </iframe>
-      </div>
+      <div class="map" id="map-container">
+      <button
+        id="load-map"
+        class="btn-primary"
+        style="cursor:pointer"
+        aria-label="Visa karta"
+      >
+        Visa karta
+      </button>
+    </div>
+
 
     </div>
   </div>
@@ -643,7 +642,7 @@ img/LaceUpEst22.jpg">
 
   <!-- Bottom line -->
   <div style="
-    text-align: center;
+    text-align:center;
     font-size:12px;
     padding:12px 20px 20px;
   ">
@@ -783,6 +782,29 @@ if (document.hidden && heroInterval) {
         contactForm.reset();
       });
     }
+
+
+  const loadMapBtn = document.getElementById("load-map");
+  const mapContainer = document.getElementById("map-container");
+
+  if (loadMapBtn && mapContainer) {
+      loadMapBtn.addEventListener("click", () => {
+        mapContainer.innerHTML = `
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3370.7089617150336!2d12.530963!3d57.929961!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4645527df88583ed%3A0x467585d2f5965d40!2sNorra%20Str%C3%B6mgatan%2016%2C%20441%2030%20Alings%C3%A5s!5e1!3m2!1sen!2sse!4v1765717259627!5m2!1sen!2sse"
+            width="100%"
+            height="100%"
+            style="border:0;border-radius:12px;"
+            allowfullscreen
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            title="Lace Up på Google Maps">
+          </iframe>
+        `;
+      });
+    }
+
+
   </script>
 </body>
 </html>
