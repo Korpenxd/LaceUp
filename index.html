@@ -34,6 +34,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700;800&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
   <link rel="preload" href="img/hero1.webp" as="image" fetchpriority="high">
+  <script type="module" src="script.js"></script>
 
   <!-- JSON-LD Structured Data -->
   <script type="application/ld+json">
@@ -158,9 +159,44 @@
     .container{max-width:var(--max-width);margin:auto;padding:60px 20px}
     h2{font-family:'Playfair Display';font-size:28px;margin:0 0 18px;background:linear-gradient(90deg,var(--gold-a),var(--gold-b));-webkit-background-clip:text;color:transparent}
 
+    .services-section {
+      background: #070707;
+      border-radius: 24px;
+      padding: 60px 20px;
+    }
+
     .services{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-    .service{padding:20px;border-radius:12px;background:linear-gradient(180deg,rgba(255,255,255,0.01),transparent);border:1px solid rgba(255,255,255,0.03);transform:translateY(0);transition:transform .35s ease,box-shadow .35s ease}
-    .service:hover{transform:translateY(-8px);box-shadow:0 20px 40px rgba(0,0,0,0.6)}
+    .service {
+      padding: 22px;
+      border-radius: 16px;
+
+      background: linear-gradient(
+        180deg,
+        rgba(20,20,20,0.9),
+        rgba(8,8,8,0.9)
+      );
+
+      border: 1px solid rgba(255, 255, 255, 0.06);
+
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,0.04),
+        0 12px 30px rgba(0,0,0,0.6);
+
+      transition:
+        transform 0.35s ease,
+        box-shadow 0.35s ease;
+    }
+    .service:hover {
+      transform: translateY(-6px);
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,0.06),
+        0 24px 50px rgba(0,0,0,0.8);
+    }
+    .services-section {
+      margin: 40px auto;
+    }
+
+
     .price{color:var(--gold-b);font-weight:800}
 
     /* Gallery */
@@ -316,7 +352,7 @@
       .contact-grid{grid-template-columns:1fr}
       .hero-right{height:300px}
     }
-    @media(max-width:560px){nav ul{display:none}.logo{width:44px;height:44px}}
+    @media(max-width:860px){nav ul{display:none}.logo{width:44px;height:44px}}
   </style>
 </head>
 <body>
@@ -360,25 +396,23 @@
         </div>
       </div>
       <div class="hero-right fade-up stagger-3">
-      <picture>
-        <source srcset="img/hero1.webp" type="image/webp">
         <img
           id="hero-rotator"
-          src="img/hero1.jpg"
+          src="img/hero1.webp"
           alt="Frisörsalong med modernt interiör och gulddetaljer"
           width="460"
           height="460"
           decoding="async"
           fetchpriority="high"
-        >
-      </picture>
+        />
     </div>
 
     </div>
   </section>
 
   <main id="main">
-    <section id="services" class="container">
+    <section id="services" class="container services-section">
+
       <h2>Tjänster</h2>
       <div class="services">
         <div class="service fade-up stagger-1">
@@ -655,6 +689,10 @@
 </footer>
 
 
+<<<<<<< HEAD
+
+
+=======
 
   <script>
   const heroImages = [
@@ -806,5 +844,6 @@ if (document.hidden && heroInterval) {
 
 
   </script>
+>>>>>>> 52e7be0737a06a08575a47da10052ee9142a6a07
 </body>
 </html>
