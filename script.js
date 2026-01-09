@@ -24,7 +24,7 @@ const heroImg = document.getElementById("hero-rotator");
 const isDesktop = window.innerWidth > 768;
 
 function startHeroRotation() {
-  if (!heroImg || heroInterval || !isDesktop) return;
+  if (!heroImg || heroInterval) return;
 
   heroInterval = setInterval(() => {
     const nextIndex = (heroIndex + 1) % heroImages.length;
@@ -197,3 +197,4 @@ if (mapContainer) {
   mapObserver.observe(mapContainer);
 }
 })();
+
