@@ -197,6 +197,87 @@
       margin: 40px auto;
     }
 
+    /* =========================
+       CAROUSEL
+    ========================= */
+
+    .carousel-stack {
+      display: grid;
+      gap: 28px;
+    }
+
+    /* Wrapper */
+    .carousel {
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Fade edges */
+    .fade-edges::before,
+    .fade-edges::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 80px;
+      z-index: 2;
+      pointer-events: none;
+    }
+
+    .fade-edges::before {
+      left: 0;
+      background: linear-gradient(to right, #070707 0%, transparent 100%);
+    }
+
+    .fade-edges::after {
+      right: 0;
+      background: linear-gradient(to left, #070707 0%, transparent 100%);
+    }
+
+    /* Track */
+    .carousel-track {
+      display: flex;
+      gap: 18px;
+      padding: 10px 80px; /* space for fade */
+      overflow-x: auto;
+      scroll-behavior: auto; /* important for looping */
+      scrollbar-width: none;
+    }
+    .carousel-track::-webkit-scrollbar {
+      display: none;
+    }
+
+    .carousel-inner {
+      display: flex;
+      gap: 18px;
+      width: max-content;
+    }
+
+    .carousel-track.dragging {
+      cursor: grabbing;
+    }
+
+    /* Prevent text selection during carousel drag */
+    .carousel-track,
+    .carousel-track * {
+      user-select: none;
+      -webkit-user-select: none;
+      -ms-user-select: none;
+    }
+
+
+
+    /* Cards */
+    .carousel .service {
+      min-width: 300px;
+      flex: 0 0 auto;
+      cursor: grab;
+    }
+    .carousel .service:active {
+      cursor: grabbing;
+    }
+
+
 
     .price{color:var(--gold-b);font-weight:800}
 
@@ -418,23 +499,144 @@
     <section id="services" class="container services-section">
 
       <h2>Tjänster</h2>
-      <div class="services">
-        <div class="service fade-up stagger-1">
-          <h3>Herrklippning</h3>
-          <div class="price">Från 350 kr</div>
-          <p>Fades, maskin och sax – anpassad stil med konsultation.</p>
-        </div>
-        <div class="service fade-up stagger-2">
-          <h3>Rakning & Skägg</h3>
-          <div class="price">Från 250 kr</div>
-          <p>Klassisk rakning, varma handdukar och skäggformning.</p>
-        </div>
-        <div class="service fade-up stagger-3">
-          <h3>Klipp & Färg</h3>
-          <div class="price">Från 1750 kr</div>
-          <p>Balayage, helfärg och avancerade färgtekniker.</p>
+      <div class="carousel-stack">
+
+      <!-- ROW 1 -->
+      <div class="carousel fade-edges" data-carousel>
+        <div class="carousel-track">
+          <div class="carousel-inner">
+            <div class="service">
+            <h3>Herrklippning</h3>
+            <div class="price">Från 650 kr</div>
+            <p>Fade eller sax med konsultation för en personlig herrfrisyr.</p>
+            </div>
+
+            <div class="service">
+              <h3>Puts exkl tvätt med skäggtrimmning</h3>
+              <div class="price">650 kr</div>
+              <p>Puts av sidor, nacke och skägg med genomgående trim.</p>
+            </div>
+
+            <div class="service">
+              <h3>Klippning +6v – 8v</h3>
+              <div class="price">650–695 kr</div>
+              <p>Klippning för dig som klippt dig ca 6–8 veckor sedan.</p>
+            </div>
+
+            <div class="service">
+              <h3>Klippning +3 månader</h3>
+              <div class="price">750 kr</div>
+              <p>Mer omfattande klippning när det gått länge sedan sist.</p>
+            </div>
+
+            <div class="service">
+              <h3>Klippning helt ny frisyr</h3>
+              <div class="price">1 290 kr</div>
+              <p>90 min med konsultation för ny frisyr inklusive hårtvätt.</p>
+            </div>
+
+            <div class="service">
+              <h3>Putsning exkl tvätt</h3>
+              <div class="price">550 kr</div>
+              <p>Snabb putsning av sidor och nacke med maskin.</p>
+            </div>
+
+            <div class="service">
+              <h3>Snabbis</h3>
+              <div class="price">370 kr</div>
+              <p>Snabb trimning runt öron och nacke – perfekt för mellanbesök.</p>
+            </div>
+
+            <div class="service">
+              <h3>Barnklippning 8–12 år</h3>
+              <div class="price">550 kr</div>
+              <p>Frisörklippning för barn i åldern 8–12 år.</p>
+            </div>
+
+            <div class="service">
+              <h3>Damklippning</h3>
+              <div class="price">695 kr</div>
+              <p>Klippning av toppar och form (exkl tvätt).</p>
+            </div>
+
+            <div class="service">
+              <h3>Klippning långt/tjockt hår</h3>
+              <div class="price">795 kr</div>
+              <p>Mer tid för klippning vid långt eller tjockt hår.</p>
+            </div>
+          </div>
         </div>
       </div>
+
+      <!-- ROW 2 -->
+      <div class="carousel fade-edges" data-carousel>
+        <div class="carousel-track">
+          <div class="carousel-inner">
+            <div class="service">
+              <h3>Utvagnsfärgning</h3>
+              <div class="price">Från 450 kr</div>
+              <p>Utväxtfärg när max 3 cm behov – snabb uppfräschning.</p>
+            </div>
+
+            <div class="service">
+              <h3>Klipp & sling kort hår</h3>
+              <div class="price">Från 2 200 kr</div>
+              <p>Slingor och klippning för kort hår med nyansering.</p>
+            </div>
+
+            <div class="service">
+              <h3>Klipp & färg kort hår</h3>
+              <div class="price">Från 1 800 kr</div>
+              <p>Klippning med enklare färgbehandling för kort frisyr.</p>
+            </div>
+
+            <div class="service">
+              <h3>Avfärgning inkl klippning</h3>
+              <div class="price">Från 1 400 kr</div>
+              <p>Avfärgning med klipp för pigmentjustering och finish.</p>
+            </div>
+
+            <div class="service">
+              <h3>Färgning fransar & bryn</h3>
+              <div class="price">550 kr</div>
+              <p>Färg och form för både ögonfransar och bryn.</p>
+            </div>
+
+            <div class="service">
+              <h3>Färgning ögonfransar</h3>
+              <div class="price">395 kr</div>
+              <p>Färgning av fransar för djupare och fylligare look.</p>
+            </div>
+
+            <div class="service">
+              <h3>Bond/Plexbehandling</h3>
+              <div class="price">100 kr+</div>
+              <p>Stärker håret under färgbehandling för bättre glans.</p>
+            </div>
+
+            <div class="service">
+              <h3>Keratinbehandling</h3>
+              <div class="price">Från 2 600 kr</div>
+              <p>Glansigt och mjukare hår med djupverkande keratin.</p>
+            </div>
+
+            <div class="service">
+              <h3>Tvätt & fön</h3>
+              <div class="price">695 kr</div>
+              <p>Lugn stund med hårtvätt, massage och valfri styling.</p>
+            </div>
+
+            <div class="service">
+              <h3>The Ultimate Beard Treatment</h3>
+              <div class="price">1 495 kr</div>
+              <p>Behandling för skägg – mjukare, kontrollerat och mindre frizz.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
     </section>
 
     <section id="gallery" class="container">
