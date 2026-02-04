@@ -165,6 +165,130 @@ if (contactForm) {
 }
 
 /* -------------------------
+   INFINITE INTERACTABLE CAROUSELS
+-------------------------- */
+
+document.querySelectorAll("[data-carousel]").forEach(carousel => {
+  const track = carousel.querySelector(".carousel-track");
+  const inner = carousel.querySelector(".carousel-inner");
+  const cards = [...inner.children];
+
+  if (!cards.length) return;
+
+  /* ---- Clone cards ---- */
+  cards.forEach(card => {
+    inner.appendChild(card.cloneNode(true));
+    inner.insertBefore(card.cloneNode(true), inner.firstChild);
+  });
+
+  const cardWidth = cards[0].offsetWidth + 18;
+  const originalCount = cards.length;
+  const startOffset = cardWidth * originalCount;
+
+  track.scrollLeft = startOffset;
+
+  /* ---- Loop correction ---- */
+  function loopCheck() {
+    if (track.scrollLeft <= cardWidth) {
+      track.scrollLeft += startOffset;
+    }
+    else if (track.scrollLeft >= startOffset * 2) {
+      track.scrollLeft -= startOffset;
+    }
+  }
+
+  track.addEventListener("scroll", loopCheck);
+
+  let isDown = false;
+  let startX = 0;
+  let scrollStart = 0;
+  let velocity = 0;
+  let lastX = 0;
+  let lastTime = 0;
+  let momentumId = null;
+
+  function momentumScroll() {
+    if (Math.abs(velocity) < 0.1) return;
+
+    track.scrollLeft -= velocity;
+    velocity *= 0.92; // friction
+
+    momentumId = requestAnimationFrame(momentumScroll);
+  }
+
+  /* ---- Mouse ---- */
+  track.addEventListener("mousedown", e => {
+    isDown = true;
+    startX = e.pageX;
+    scrollStart = track.scrollLeft;
+    lastX = startX;
+    lastTime = performance.now();
+    velocity = 0;
+
+    cancelAnimationFrame(momentumId);
+  });
+
+  window.addEventListener("mouseup", () => {
+    if (!isDown) return;
+    isDown = false;
+    momentumScroll();
+  });
+
+  window.addEventListener("mousemove", e => {
+    if (!isDown) return;
+
+    const now = performance.now();
+    const dx = e.pageX - lastX;
+    const dt = now - lastTime;
+
+    velocity = dx / dt * 16; // normalize to frame time
+
+    track.scrollLeft = scrollStart - (e.pageX - startX);
+
+    lastX = e.pageX;
+    lastTime = now;
+  });
+
+  /* ---- Touch ---- */
+  track.addEventListener("touchstart", e => {
+    startX = e.touches[0].pageX;
+    scrollStart = track.scrollLeft;
+    lastX = startX;
+    lastTime = performance.now();
+    velocity = 0;
+
+    cancelAnimationFrame(momentumId);
+  });
+
+  track.addEventListener("touchmove", e => {
+    const x = e.touches[0].pageX;
+    const now = performance.now();
+    const dx = x - lastX;
+    const dt = now - lastTime;
+
+    velocity = dx / dt * 16;
+
+    track.scrollLeft = scrollStart - (x - startX);
+
+    lastX = x;
+    lastTime = now;
+  });
+
+  track.addEventListener("touchend", () => {
+    momentumScroll();
+  });
+
+
+  /* ---- Mouse wheel ---- */
+  track.addEventListener("wheel", e => {
+    e.preventDefault();
+    track.scrollLeft += e.deltaY;
+  }, { passive: false });
+});
+
+
+
+/* -------------------------
    GOOGLE MAPS – LAZY LOAD ON SCROLL
 -------------------------- */
 
@@ -197,4 +321,3 @@ if (mapContainer) {
   mapObserver.observe(mapContainer);
 }
 })();
-
